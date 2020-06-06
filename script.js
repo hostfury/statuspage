@@ -8,7 +8,7 @@ $(document).ready(function() {
 		},
 		github: {
 			org: 'hostfury',
-			repo: 'status'
+			repo: 'statuspage'
 		}
 	};
 	var status_text = {
