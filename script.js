@@ -56,7 +56,7 @@ $(document).ready(function() {
 			var clas = item.class;
 			var text = item.text;
 			$('#services').append('<div class="list-group-item">'+
-				'<big><span class="pull-right label '+ clas + '">' + text + '</span></big>' +
+				'<span class="pull-right label '+ clas + '">' + text + '</span>' +
 				'<h4 class="list-group-item-heading">' + name + '</h4>' +
 				'</div>');
 		});
@@ -99,13 +99,13 @@ $(document).ready(function() {
 			html += '<span class="date">' + datetime(issue.created_at) + '</span>\n';
 
 			if (issue.state === 'closed') {
-				html += '&nbsp;<span class="badge label-success pull-right">closed</span>&nbsp;';
+				html += '<span style="padding-left:5px;padding-right:5px;" class="badge label-success pull-right">closed</span>';
 			} else {
-				html += '&nbsp;<span class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>&nbsp;\n';
+				html += '<span style="padding-left:5px;padding-right:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
 			}
 
 			for (var i = 0; i < systems.length; i++) {
-				html += '&nbsp;<span class="badge system pull-right">' + systems[i] + '</span>&nbsp;';
+				html += '<span style="padding-left:5px;padding-right:5px;" class="badge system pull-right">' + systems[i] + '</span>';
 			}
 
 			html += '<h2>' + issue.title + '</h2>\n';
