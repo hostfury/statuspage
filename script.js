@@ -99,13 +99,13 @@ $(document).ready(function() {
 			html += '<span class="date">' + datetime(issue.created_at) + '</span>\n';
 
 			if (issue.state === 'closed') {
-				html += '<span style="padding-left:5px;padding-right:5px;" class="badge label-success pull-right">closed</span>';
+				html += '<span style="margin-left:5px;margin-right:5px;" class="badge label-success pull-right">closed</span>';
 			} else {
-				html += '<span style="padding-left:5px;padding-right:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
+				html += '<span style="margin-left:5px;margin-right:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
 			}
 
 			for (var i = 0; i < systems.length; i++) {
-				html += '<span style="padding-left:5px;padding-right:5px;" class="badge system pull-right">' + systems[i] + '</span>';
+				html += '<span style="margin-left:5px;margin-right:5px;" class="badge system pull-right">' + systems[i] + '</span>';
 			}
 
 			html += '<h2>' + issue.title + '</h2>\n';
