@@ -105,7 +105,7 @@ $(document).ready(function() {
 			}
 
 			for (var i = 0; i < systems.length; i++) {
-				html += '<span class="badge system pull-right">' + systems[i] + '</span> ';
+				html += '<span class="badge system pull-right">' + systems[i] + '</span>&nbsp;';
 			}
 
 			html += '<h2>' + issue.title + '</h2>\n';
