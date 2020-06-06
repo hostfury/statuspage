@@ -56,7 +56,7 @@ $(document).ready(function() {
 			var clas = item.class;
 			var text = item.text;
 			$('#services').append('<div class="list-group-item">'+
-				'<span class="pull-right label '+ clas + '">' + text + '</span>' +
+				'<big><span class="pull-right label '+ clas + '">' + text + '</span></big>' +
 				'<h4 class="list-group-item-heading">' + name + '</h4>' +
 				'</div>');
 		});
@@ -99,13 +99,13 @@ $(document).ready(function() {
 			html += '<span class="date">' + datetime(issue.created_at) + '</span>\n';
 
 			if (issue.state === 'closed') {
-				html += '<span class="badge label-success pull-right">closed</span>';
+				html += '&nbsp;<span class="badge label-success pull-right">closed</span>&nbsp;';
 			} else {
-				html += '<span class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
+				html += '&nbsp;<span class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>&nbsp;\n';
 			}
 
 			for (var i = 0; i < systems.length; i++) {
-				html += '<span class="badge system pull-right">' + systems[i] + '</span>&nbsp;';
+				html += '&nbsp;<span class="badge system pull-right">' + systems[i] + '</span>&nbsp;';
 			}
 
 			html += '<h2>' + issue.title + '</h2>\n';
