@@ -20,7 +20,6 @@ $(document).ready(function() {
 		'major outage': 'outage',
 		'degraded performance': 'degraded',
 	};
-    //config.uptimerobot.api_keys.sort();
 	var monitors = config.uptimerobot.api_keys;
 	for( var i in monitors ){
 		var api_key = monitors[i];
@@ -104,14 +103,19 @@ $(document).ready(function() {
 			}
 
 			html += '<div class="timeline-label">\n';
-			html += '<span class="date">' + datetime(issue.created_at) + '</span>\n';
+			html += '<h2><b>' + issue.title + '</b></h2>\n';
+			html += '<span class="date">Created: ' + datetime(issue.created_at) + ' (' + jQuery.timeago(issue.created_at) + ')</span>\n';
+			if (issue.created_at === issue.updated_at){
+			    //
+			} else {
+			    html += '<br /><span class="date">Updated: ' + datetime(issue.updated_at) + ' (' + jQuery.timeago(issue.updated_at) + ')</span>\n';
+			}
 
 			if (issue.state === 'closed') {
 				html += '<span style="margin-left:5px;" class="badge label-success pull-right">closed</span>';
 			} else {
 				html += '<span style="margin-left:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
 			}
-			html += '<h2>' + issue.title + '</h2>\n';
 			html += '<hr>\n';
 			var issuebody  = issue.body.replace(/\n/g, "<br />");
 			html += '<p>' + issuebody + '</p>\n';
@@ -119,7 +123,7 @@ $(document).ready(function() {
     			html += '<p>Impacted: ';
 			}
 			for (var i = 0; i < systems.length; i++) {
-				html += '<span style="margin-right:5px; margin-top:5px;" class="badge system">' + systems[i] + '</span>';
+				html += '<span style="margin-right:5px;" class="badge system">' + systems[i] + '</span>';
 			}
 			if (systems.length > 0){
     			html += '</p>';
@@ -129,12 +133,14 @@ $(document).ready(function() {
 			html += '</article>';
 			$('#incidents').append(html);
 		});
-
 		function datetime(string) {
-			var datetime = string.split('T');
-			var date = datetime[0];
-			var time = datetime[1];//.replace('Z', '');
-			return date + ' ' + time;
+		    var d = new Date(string);
+		    var local = d.toLocaleString('en-US','timeZone');
+			//var datetime = string.split('T');
+			//var date = datetime[0];
+			//var time = datetime[1].replace('Z', ' UTC');
+			//var local = date + ' ' + time.toString();
+			return local;
 		};
 	};
 });
