@@ -4,7 +4,10 @@ $(document).ready(function() {
 			api_keys: [
 				"ur405155-1fd9b8b88180cc9e60378771" //read only account key
 			],
-			logs: 1
+			logs: 1,
+			response_times: 1,
+			response_times_limit: 1,
+			average_response_time: 1
 		},
 		github: {
 			org: 'hostfury',
@@ -25,6 +28,9 @@ $(document).ready(function() {
 			"api_key": api_key,
 			"format": "json",
 			"logs": config.uptimerobot.logs,
+			"response_times": config.uptimerobot.response_times,
+			"response_times_limit": config.uptimerobot.response_times_limit,
+			"average_response_time": config.uptimerobot.average_response_time
 		}, function(response) {
 			status( response );
 		}, 'json');
@@ -55,8 +61,8 @@ $(document).ready(function() {
 			var name = item.friendly_name;
 			var clas = item.class;
 			var text = item.text;
-			$('#services').append('<div class="list-group-item">'+
-				'<span class="pull-right label '+ clas + '">' + text + '</span>' +
+			var avgrsp = item.average_response_time;
+			$('#services').append('<div class="list-group-item">'+ '<span class="pull-right label '+ clas + '">' + text + '</span><span class="pull-right" style="margin-right:5px;">'+Math.round(avgrsp)+'ms</span> ' +
 				'<h4 class="list-group-item-heading">' + name + '</h4>' +
 				'</div>');
 		});
