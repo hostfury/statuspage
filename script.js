@@ -111,15 +111,19 @@ $(document).ready(function() {
 			} else {
 				html += '<span style="margin-left:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
 			}
-
-			for (var i = 0; i < systems.length; i++) {
-				html += '<span style="margin-left:5px;" class="badge system pull-right">' + systems[i] + '</span>';
-			}
-
 			html += '<h2>' + issue.title + '</h2>\n';
 			html += '<hr>\n';
 			var issuebody  = issue.body.replace(/\n/g, "<br />");
 			html += '<p>' + issuebody + '</p>\n';
+			if (systems.length > 0){
+    			html += '<p>Impacted: ';
+			}
+			for (var i = 0; i < systems.length; i++) {
+				html += '<span style="margin-right:5px; margin-top:5px;" class="badge system">' + systems[i] + '</span>';
+			}
+			if (systems.length > 0){
+    			html += '</p>';
+			}
 			html += '</div>';
 			html += '</div>';
 			html += '</article>';
