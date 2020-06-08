@@ -95,7 +95,9 @@ $(document).ready(function() {
 			var html = '<article class="timeline-entry">\n';
 			html += '<div class="timeline-entry-inner">\n';
 
-			if (issue.state === 'closed') {
+			if (issue.title.includes("Planned Maintenance")) {
+			    html += '<div class="timeline-icon bg-info"><i class="entypo-feather"></i></div>';
+			} else if (issue.state === 'closed') {
 				html += '<div class="timeline-icon bg-success"><i class="entypo-feather"></i></div>';
 			} else {
 				html += '<div class="timeline-icon bg-secondary"><i class="entypo-feather"></i></div>';
@@ -116,14 +118,8 @@ $(document).ready(function() {
 
 			html += '<h2>' + issue.title + '</h2>\n';
 			html += '<hr>\n';
-			var issuebody  = issue.body.replace("\n","<br />");
-			var issuebody2 = issuebody.replace("\r","<br />");
-			html += '<p>' + issuebody2 + '</p>\n';
-
-			if (issue.state === 'closed') {
-				//html += '<p><em>Updated ' + datetime(issue.closed_at) + '<br/>';
-				//html += 'The system is back in normal operation.</p>';
-			}
+			var issuebody  = issue.body.replace(/\n/g, "<br />");
+			html += '<p>' + issuebody + '</p>\n';
 			html += '</div>';
 			html += '</div>';
 			html += '</article>';
