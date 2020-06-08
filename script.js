@@ -101,18 +101,17 @@ $(document).ready(function() {
 			}
 
 			html += '<div class="timeline-label">\n';
+			if (issue.state === 'closed') {
+				html += '<span style="margin-left:5px;" class="badge label-success pull-right">closed</span>';
+			} else {
+				html += '<span style="margin-left:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
+			}
 			html += '<h2><b>' + issue.title + '</b></h2>\n';
 			html += '<span class="date">Created: ' + datetime(issue.created_at) + ' (' + jQuery.timeago(issue.created_at) + ')</span>\n';
 			if (issue.created_at === issue.updated_at){
 			    //
 			} else {
 			    html += '<br /><span class="date">Updated: ' + datetime(issue.updated_at) + ' (' + jQuery.timeago(issue.updated_at) + ')</span>\n';
-			}
-
-			if (issue.state === 'closed') {
-				html += '<span style="margin-left:5px;" class="badge label-success pull-right">closed</span>';
-			} else {
-				html += '<span style="margin-left:5px;" class="badge ' + (status === 'operational' ? 'label-success' : 'label-warning') + ' pull-right">open</span>\n';
 			}
 			html += '<hr>\n';
 			var issuebody  = issue.body.replace(/\n/g, "<br />");
