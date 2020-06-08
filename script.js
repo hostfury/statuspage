@@ -84,7 +84,6 @@ $(document).ready(function() {
 			}).map(function(label) {
 				return label.name.replace('system:', '')
 			});
-
 			if (issue.state === 'open') {
 				$('#panel').data('incident', 'true');
 				$('#panel').attr('class', (status === 'operational' ? 'panel-success' : 'panel-warning') );
@@ -93,8 +92,7 @@ $(document).ready(function() {
 
 			var html = '<article class="timeline-entry">\n';
 			html += '<div class="timeline-entry-inner">\n';
-
-			if (issue.title.includes("Planned Maintenance")) {
+			if (issue.title.includes("Planned Maintenance") || systems.includes("Planned Maintenance")) {
 			    html += '<div class="timeline-icon bg-info"><i class="entypo-feather"></i></div>';
 			} else if (issue.state === 'closed') {
 				html += '<div class="timeline-icon bg-success"><i class="entypo-feather"></i></div>';
@@ -133,6 +131,9 @@ $(document).ready(function() {
 			html += '</article>';
 			$('#incidents').append(html);
 		});
+		function exists(arr, search) {
+            return arr.some(row => row.includes(search));
+        }
 		function datetime(string) {
 		    var d = new Date(string);
 		    var local = d.toLocaleString('en-US','timeZone');
