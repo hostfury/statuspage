@@ -96,6 +96,8 @@ $(document).ready(function() {
 			    html += '<div class="timeline-icon bg-info"><i class="entypo-feather"></i></div>';
 			} else if (issue.state === 'closed') {
 				html += '<div class="timeline-icon bg-success"><i class="entypo-feather"></i></div>';
+			} else if (issue.title.includes("Investigating:") {
+				html += '<div class="timeline-icon bg-warning"><i class="entypo-feather"></i></div>';
 			} else {
 				html += '<div class="timeline-icon bg-secondary"><i class="entypo-feather"></i></div>';
 			}
